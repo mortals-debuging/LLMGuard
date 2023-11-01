@@ -1,14 +1,14 @@
 from modelAPI.Baidu.Llma_2 import Llma_2
 from modelAPI.Baidu.ERNIE_Bot import ERNIE_Bot
 from modelAPI.Baidu.ChatGLM import ChatGLM
-from modelAPI.OpenAI.Chatgpt import Chatgpt
+from modelAPI.OpenAI.Chatgpt import ChatgptAPI
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 llma_2 = Llma_2()
 ernie_bot = ERNIE_Bot()
 chatglm = ChatGLM()
-chatgpt = Chatgpt()
-bots = [chatglm, ernie_bot, llma_2]
+chatgpt = ChatgptAPI()
+bots = [chatglm, ernie_bot, llma_2, chatgpt]
 
 while True:
     user_input = input(">>>")
@@ -20,5 +20,4 @@ while True:
 
     for i, response in enumerate(responses):
         print(f"ROBOT{i+1} >>>：{response}")
-        # bots[i].add_message(response, "assistant")
-        bots[i].clear_message()
+        bots[i].add_message(response, "assistant")

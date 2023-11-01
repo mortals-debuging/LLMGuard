@@ -1,8 +1,7 @@
 *.json
-*.go
+*.py
 go.mod
 __pycache__/
 *.py[cod]
 *.pyc
 .idea/
-*.txt

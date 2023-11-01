@@ -53,7 +53,3 @@ class BaiduAPI:
             "client_secret": self.SECRET_KEY
         }
         return str(requests.post(url, params=params).json().get("access_token"))
-    
-    def clear_message(self):
-        self.messageQueue.clear()
-        return {"messages": list(self.messageQueue)}

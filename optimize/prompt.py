@@ -1,14 +1,13 @@
 import jieba
 import jieba.analyse
 import jieba.posseg as pseg
-import re
 
 class OptimizePrompt:
     def __init__(self):
         
         self.label = ["生活常识","志愿填报","学校信息","其他"]
 
-        self.prompt = "你现在的任务是优化问题prompt。你首先在（"+str(self.label)+"）中选择分类。格式为：分类结果： 优化结果：。这个Prompt是：\""
+        self.prompt = "你现在的任务是优化调整句子，不要有任何的分析。你首先在（"+str(self.label)+"）中选择分类。格式为：分类结果： 优化结果：。这个句子是：\n\""
         jieba.load_userdict("optimize/PromptText/specialword.txt")
     
     def extract_keywords(self, text,n=3):
@@ -18,7 +17,6 @@ class OptimizePrompt:
         # print("/".join(keywords))
         return keywords
 
-    
     def extract_keywords_with_pos(self, text, keywords):
 
         # 直接对整个文本进行词性标注
@@ -48,3 +46,5 @@ class OptimizePrompt:
             prompt = prompt.replace(entity, "["+entity+"]")
             
         return prompt
+    
+    

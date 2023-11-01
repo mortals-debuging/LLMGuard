@@ -4,7 +4,7 @@ from collections import deque
 from modelAPI.OpenAI.Token.TokenAllocate import GetToken
 
 
-class Chatgpt:
+class ChatgptAPI:
     def __init__(self) -> None:
         token = GetToken()
         self.API_KEY = token['API_KEY']
@@ -27,9 +27,5 @@ class Chatgpt:
 
     def response(self, mesg:str, role="user"):
         result =  self.invoke(mesg,role)
-        # print(result)
+        print(result)
         return result.choices[0].message.content
-    
-    def clear_message(self):
-        self.messageQueue.clear()
-        return list(self.messageQueue)
